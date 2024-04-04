@@ -1,0 +1,3 @@
+/home/stefy0-0/CLionProjects/OOP/farmacie/cmake-build-debug/CMakeFiles/farmacie.dir
+/home/stefy0-0/CLionProjects/OOP/farmacie/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/stefy0-0/CLionProjects/OOP/farmacie/cmake-build-debug/CMakeFiles/rebuild_cache.dir
