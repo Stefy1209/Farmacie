@@ -13,6 +13,14 @@ Medicine::Medicine() {
 Medicine::Medicine(ID id, std::string name, std::string producer, std::string active_substance,
                    Price price): id(id), name(std::move(name)), producer(std::move(producer)), active_substance(std::move(active_substance)), price(price) {}
 
+bool Medicine::operator==(const Medicine &medicine) const {
+    return  this->id == medicine.id and
+            this->name == medicine.name and
+            this->producer == medicine.producer and
+            this->active_substance == medicine.active_substance and
+            this->price == medicine.price;
+}
+
 ID Medicine::getID() const {
     return id;
 }

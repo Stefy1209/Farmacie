@@ -23,6 +23,9 @@ public:
              string producer,
              string active_substance,
              Price price);
+    ~Medicine() = default;
+
+    bool operator==(const Medicine & medicine) const;
 
     [[nodiscard]] ID getID() const;
     [[nodiscard]] string getName() const;
@@ -34,8 +37,6 @@ public:
     void setProducer(const string & new_producer);
     void setActiveSubstance(const string & new_active_substance);
     void setPrice(Price new_price);
-
-    ~Medicine() = default;
 };
 
 #endif //FARMACIE_MEDICINE_H
