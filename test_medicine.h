@@ -1,0 +1,6 @@
+#ifndef FARMACIE_TEST_MEDICINE_H
+#define FARMACIE_TEST_MEDICINE_H
+
+void runTestMedicine();
+
+#endif //FARMACIE_TEST_MEDICINE_H
