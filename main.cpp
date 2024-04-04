@@ -1,6 +1,6 @@
-#include <iostream>
+#include "test_medicine.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    runTestMedicine();
     return 0;
 }
