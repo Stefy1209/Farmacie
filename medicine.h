@@ -11,11 +11,11 @@ typedef double Price;
 class Medicine{
 private:
     ID id;
-public:
     string name;
     string producer;
     string active_substance;
     Price price;
+public:
 
     Medicine();
     Medicine(ID id,
