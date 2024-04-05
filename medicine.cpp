@@ -2,12 +2,7 @@
 
 #include <utility>
 
-Medicine::Medicine() {
-    id = 0;
-    name = "Unknown";
-    producer = "Unknown";
-    active_substance = "Unknown";
-    price = -1;
+Medicine::Medicine() : id(0), name("Unknown"), producer("Unknown"), active_substance("Unknown"), price(-1) {
 }
 
 Medicine::Medicine(ID id, std::string name, std::string producer, std::string active_substance,
