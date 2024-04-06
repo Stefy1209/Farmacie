@@ -11,6 +11,8 @@ add_executable(farmacie main.cpp
         repository_medicine.cpp
         repository_medicine.h
         test_repository_medicine.cpp
-        test_repository_medicine.h)
+        test_repository_medicine.h
+        service_medicine.cpp
+        service_medicine.h)
 
 target_compile_options(farmacie PRIVATE -Wall -Wextra -Wpedantic -Werror)
