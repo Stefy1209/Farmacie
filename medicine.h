@@ -2,8 +2,10 @@
 #define FARMACIE_MEDICINE_H
 
 #include <string>
+#include <iostream>
 
 using std::string;
+using std::ostream;
 
 typedef unsigned long long ID;
 typedef double Price;
@@ -23,9 +25,12 @@ public:
              string producer,
              string active_substance,
              Price price);
+    Medicine(const Medicine &other);
     ~Medicine() = default;
 
     bool operator==(const Medicine & medicine) const;
+    Medicine& operator=(const Medicine & other);
+    friend ostream& operator<<(ostream& os, const Medicine& medicine);
 
     [[nodiscard]] ID getID() const;
     [[nodiscard]] string getName() const;

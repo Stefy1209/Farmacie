@@ -1,6 +1,6 @@
 #include "repository_medicine.h"
 
-vector<Medicine> MedicineRepository::getList() {
+vector<Medicine>& MedicineRepository::getList() {
     return list;
 }
 
@@ -8,7 +8,7 @@ size_t MedicineRepository::getSizeList() {
     return list.size();
 }
 
-Medicine MedicineRepository::getMedicine(size_t index) {
+Medicine& MedicineRepository::getMedicine(size_t index) {
     return list[index];
 }
 

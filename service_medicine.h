@@ -10,7 +10,7 @@ public:
     void addMedicine(const string & name, const string & producer, const string & active_substance, Price price);
     void removeMedicine(ID id);
     void modifyMedicine(ID id, const string & new_name, const string & new_producer, const string & new_active_substance, Price new_price);
-    vector<Medicine> getAll();
+    vector<Medicine>& getAll();
 
     Medicine findMedicine(const string & name, const string & producer, const string & active_substance);
 

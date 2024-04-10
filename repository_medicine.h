@@ -12,9 +12,9 @@ class MedicineRepository {
 private:
     vector<Medicine> list;
 public:
-    vector<Medicine> getList();
+    vector<Medicine>& getList();
     size_t getSizeList();
-    Medicine getMedicine(size_t index);
+    Medicine& getMedicine(size_t index);
 
     void addMedicine(const Medicine & medicine);
     void removeMedicine(const Medicine & medicine);

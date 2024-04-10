@@ -34,7 +34,7 @@ void ServiceMedicine::modifyMedicine(ID id, const std::string &new_name, const s
     }
 }
 
-vector<Medicine> ServiceMedicine::getAll() {
+vector<Medicine>& ServiceMedicine::getAll() {
     return main_data.getList();
 }
 
@@ -51,8 +51,7 @@ Medicine ServiceMedicine::findMedicine(const std::string &name, const std::strin
         }
     }
 
-    return medicine;
-}
+    return medicine;}
 
 vector<Medicine> ServiceMedicine::filterByPrice(Price price) {
     vector<Medicine> list_filtered;
@@ -63,8 +62,7 @@ vector<Medicine> ServiceMedicine::filterByPrice(Price price) {
         }
     }
 
-    return list_filtered;
-}
+    return list_filtered;}
 
 vector<Medicine> ServiceMedicine::filerByActiveSubstance(const std::string &active_substance) {
     vector<Medicine> list_filtered;
@@ -75,8 +73,7 @@ vector<Medicine> ServiceMedicine::filerByActiveSubstance(const std::string &acti
         }
     }
 
-    return list_filtered;
-}
+    return list_filtered;}
 
 bool compareByName(const Medicine &a, const Medicine &b) {
     //if(a.getName() == b.getName())
@@ -89,8 +86,7 @@ vector<Medicine> ServiceMedicine::sortByName() {
 
     sort(list_ordered.begin(), list_ordered.end(), compareByName);
 
-    return list_ordered;
-}
+    return list_ordered;}
 
 bool compareByProducer(const Medicine &a, const Medicine &b) {
     if(a.getProducer() == b.getProducer())
@@ -103,8 +99,7 @@ vector<Medicine> ServiceMedicine::sortByProducer() {
 
     sort(list_ordered.begin(), list_ordered.end(), compareByProducer);
 
-    return list_ordered;
-}
+    return list_ordered;}
 
 bool compareByActiveSubstanceAndPrice(const Medicine &a, const Medicine &b) {
     if(a.getActiveSubstance() == b.getActiveSubstance())
@@ -117,5 +112,4 @@ vector<Medicine> ServiceMedicine::sortByActiveSubstanceAndPrice() {
 
     sort(list_ordered.begin(), list_ordered.end(), compareByActiveSubstanceAndPrice);
 
-    return list_ordered;
-}
+    return list_ordered;}// in mod normal nu imi place sa pun asa paranteza dar altfel nu imi arata 100% coverage soooooo !!!F#CK YOU CLION!!!
