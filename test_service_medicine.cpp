@@ -5,8 +5,8 @@
 
 void runTestService() {
     ServiceMedicine service;
-    vector<Medicine> list;
-    vector<Medicine> medicineList = {Medicine(1, "Aspirin", "Bayer", "Acetylsalicylic Acid", 5.0),
+    My_list<Medicine> list;
+    My_list<Medicine> medicineList = {Medicine(1, "Aspirin", "Bayer", "Acetylsalicylic Acid", 5.0),
                                      Medicine(2, "Ibuprofen", "Pfizer", "Ibuprofen", 10.0),
                                      Medicine(3, "Acetaminophen", "Johnson & Johnson", "Acetaminophen", 8.0),
                                      Medicine(4, "Lisinopril", "AstraZeneca", "Lisinopril", 20.0),
@@ -51,31 +51,31 @@ void runTestService() {
     assert(medicine == Medicine(-1, "Unfounded", "Unfounded", "Unfounded", -1));
 
     ///Test filterByPrice
-    vector<Medicine> filtered_by_price = service.filterByPrice(14);
+    My_list<Medicine> filtered_by_price = service.filterByPrice(14);
     assert(filtered_by_price[0] == medicineList[0]);
     assert(filtered_by_price[1] == medicineList[1]);
     assert(filtered_by_price[2] == Medicine(4, "Acetaminophen", "Johnson & Johnson", "Acetaminophen", 8.0));
 
     ///Test filerByActiveSubstance
-    vector<Medicine> filtered_by_active_substance = service.filerByActiveSubstance("Acetaminophen");
+    My_list<Medicine> filtered_by_active_substance = service.filerByActiveSubstance("Acetaminophen");
     assert(filtered_by_active_substance[0] == Medicine(4, "Acetaminophen", "Johnson & Johnson", "Acetaminophen", 8.0));
 
     ///Test sortByName
-    vector<Medicine> list_sorted_by_name = service.sortByName();
+    My_list<Medicine> list_sorted_by_name = service.sortByName();
     assert(list_sorted_by_name[0] == Medicine(4, "Acetaminophen", "Johnson & Johnson", "Acetaminophen", 8.0));
     assert(list_sorted_by_name[1] == medicineList[0]);
     assert(list_sorted_by_name[2] == medicineList[1]);
     assert(list_sorted_by_name[3] == medicineList[4]);
 
     ///Test sortByProducer
-    vector<Medicine> list_sorted_by_Producer = service.sortByProducer();
+    My_list<Medicine> list_sorted_by_Producer = service.sortByProducer();
     assert(list_sorted_by_Producer[0] == medicineList[0]);
     assert(list_sorted_by_Producer[1] == medicineList[4]);
     assert(list_sorted_by_Producer[2] == Medicine(4, "Acetaminophen", "Johnson & Johnson", "Acetaminophen", 8.0));
     assert(list_sorted_by_Producer[3] == medicineList[1]);
 
     ///Test sortByActiveSubstanceAndPrice
-    vector<Medicine> list_sorted_by_active_substance_and_price = service.sortByActiveSubstanceAndPrice();
+    My_list<Medicine> list_sorted_by_active_substance_and_price = service.sortByActiveSubstanceAndPrice();
     assert(list_sorted_by_active_substance_and_price[0] == Medicine(4, "Acetaminophen", "Johnson & Johnson", "Acetaminophen", 8.0));
     assert(list_sorted_by_active_substance_and_price[1] == medicineList[4]);
     assert(list_sorted_by_active_substance_and_price[2] == medicineList[0]);

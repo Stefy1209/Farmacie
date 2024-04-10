@@ -1,31 +1,35 @@
 #include "repository_medicine.h"
 
-vector<Medicine>& MedicineRepository::getList() {
+My_list<Medicine>& MedicineRepository::getList() {
     return list;
 }
 
 size_t MedicineRepository::getSizeList() {
-    return list.size();
+    return list.getSize();
 }
 
 Medicine& MedicineRepository::getMedicine(size_t index) {
-    return list[index];
+    return list.get(index);
 }
 
 void MedicineRepository::addMedicine(const Medicine &medicine) {
-    list.push_back(medicine);
+    list.add(medicine);
 }
 
 void MedicineRepository::removeMedicine(const Medicine &medicine) {
-    auto index = find(list.begin(), list.end(), medicine);
+/*
+    auto index = find(list.being(), list.end(), medicine);
 
     if(index != list.end()) {
-        list.erase(index);
+        list.remove(index);
     }
+*/
+    list.remove(medicine);
 }
 
 void MedicineRepository::modifyMedicine(const Medicine &old_medicine, const Medicine &new_medicine) {
-    for(Medicine & medicine:list) {
+    for(size_t index = 0; index < list.getSize(); ++index) {
+        Medicine& medicine = list.get(index);
         if(medicine == old_medicine) {
             medicine = new_medicine;
             return;

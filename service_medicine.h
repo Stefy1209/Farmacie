@@ -10,16 +10,16 @@ public:
     void addMedicine(const string & name, const string & producer, const string & active_substance, Price price);
     void removeMedicine(ID id);
     void modifyMedicine(ID id, const string & new_name, const string & new_producer, const string & new_active_substance, Price new_price);
-    vector<Medicine>& getAll();
+    My_list<Medicine> & getAll();
 
     Medicine findMedicine(const string & name, const string & producer, const string & active_substance);
 
-    vector<Medicine> filterByPrice(Price price);
-    vector<Medicine> filerByActiveSubstance(const string & active_substance);
+    My_list<Medicine> filterByPrice(Price price);
+    My_list<Medicine> filerByActiveSubstance(const string &active_substance);
 
-    vector<Medicine> sortByName();
-    vector<Medicine> sortByProducer();
-    vector<Medicine> sortByActiveSubstanceAndPrice();
+    My_list<Medicine> sortByName();
+    My_list<Medicine> sortByProducer();
+    My_list<Medicine> sortByActiveSubstanceAndPrice();
 };
 
 #endif //FARMACIE_SERVICE_MEDICINE_H

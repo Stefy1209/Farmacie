@@ -1,18 +1,16 @@
 #ifndef FARMACIE_REPOSITORY_MEDICINE_H
 #define FARMACIE_REPOSITORY_MEDICINE_H
 
-#include <vector>
-
 #include "medicine.h"
+#include "my_list.h"
 
-using std::vector;
 using std::find;
 
 class MedicineRepository {
 private:
-    vector<Medicine> list;
+    My_list<Medicine> list;
 public:
-    vector<Medicine>& getList();
+    My_list<Medicine>& getList();
     size_t getSizeList();
     Medicine& getMedicine(size_t index);
 

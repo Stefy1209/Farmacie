@@ -1,4 +1,5 @@
 #include <iostream>
+#include "my_list.h"
 
 #include "ui.h"
 
@@ -6,17 +7,17 @@ using std::cin;
 using std::cout;
 
 void UI::preloadData() {
-    vector<Medicine> medicineList = {Medicine(1, "Aspirin", "Bayer", "Acetylsalicylic Acid", 5.0),
+    Medicine medicineList[] = {Medicine(1, "Aspirin", "Bayer", "Acetylsalicylic Acid", 5.0),
                                      Medicine(2, "Ibuprofen", "Pfizer", "Ibuprofen", 10.0),
                                      Medicine(3, "Acetaminophen", "Johnson & Johnson", "Acetaminophen", 8.0),
                                      Medicine(4, "Lisinopril", "AstraZeneca", "Lisinopril", 20.0),
                                      Medicine(5, "Loratadine", "Bayer", "Acetaminophen", 15.0)} ;
 
-    for(size_t i = 0; i < 5; ++i) {
-        service.addMedicine(medicineList[i].getName(),
-                            medicineList[i].getProducer(),
-                            medicineList[i].getActiveSubstance(),
-                            medicineList[i].getPrice());
+    for(const auto & i : medicineList) {
+        service.addMedicine(i.getName(),
+                            i.getProducer(),
+                            i.getActiveSubstance(),
+                            i.getPrice());
     }
 }
 
@@ -29,77 +30,83 @@ void UI::runUI() {
         cout << ">>> ";
         cin >> command;
         cout << '\n';
-        switch (command[0]) {
-            case 'a': {
-                if (command == "add") {
-                    runAdd();
+        try {
+            switch (command[0]) {
+                case 'a': {
+                    if (command == "add") {
+                        runAdd();
+                    }
+                    break;
                 }
-                break;
+                case 'r': {
+                    if (command == "remove") {
+                        runRemove();
+                    }
+                    break;
+                }
+                case 'e': {
+                    if (command == "exit") {
+                        finished = true;
+                    }
+                    break;
+                }
+                case 'f': {
+                    if (command == "find") {
+                        runFind();
+                    }
+                    if (command == "filter_by_price") {
+                        runFilterByPrice();
+                    }
+                    if (command == "filter_by_substance") {
+                        runFilterByActiveSubstance();
+                    }
+                    break;
+                }
+                case 's': {
+                    if (command == "sort_by_name") {
+                        runSortByName();
+                    }
+                    if (command == "sort_by_producer") {
+                        runSortByProducer();
+                    }
+                    if (command == "sort_by_substance") {
+                        runSortByActiveSubstanceAndPrice();
+                    }
+                    break;
+                }
+                case 'p': {
+                    if (command == "print") {
+                        runPrint();
+                    }
+                    break;
+                }
+                case 'm': {
+                    if (command == "modify") {
+                        runModify();
+                    }
+                    break;
+                }
+                default: {
+                    break;
+                }
             }
-            case 'r': {
-                if (command == "remove") {
-                    runRemove();
-                }
-                break;
-            }
-            case 'e': {
-                if (command == "exit") {
-                    finished = true;
-                }
-                break;
-            }
-            case 'f': {
-                if (command == "find") {
-                    runFind();
-                }
-                if (command == "filter_by_price") {
-                    runFilterByPrice();
-                }
-                if (command == "filter_by_substance") {
-                    runFilterByActiveSubstance();
-                }
-                break;
-            }
-            case 's': {
-                if (command == "sort_by_name") {
-                    runSortByName();
-                }
-                if (command == "sort_by_producer") {
-                    runSortByProducer();
-                }
-                if (command == "sort_by_substance") {
-                    runSortByActiveSubstanceAndPrice();
-                }
-                break;
-            }
-            case 'p': {
-                if (command == "print") {
-                    runPrint();
-                }
-                break;
-            }
-            case 'm': {
-                if (command == "modify") {
-                    runModify();
-                }
-                break;
-            }
-            default: {
-                break;
-            }
+        }
+        catch (const std::exception& e) {
+            std::cerr << "Caught exception: " << e.what() << '\n';
         }
     }
 
 }
 
-void print(const vector<Medicine> & list) {
-    for(const Medicine & medicine:list) {
+void print(My_list<Medicine> & list) {
+    for(size_t index = 0; index < list.getSize(); ++index) {
+        Medicine medicine = list.get(index);
         cout << medicine;
     }
 }
 
 void UI::runPrint() {
-    const vector<Medicine>& list = service.getAll();
+    My_list<Medicine>& list = service.getAll();
     print(list);
 }
 
@@ -173,7 +180,7 @@ void UI::runFilterByPrice() {
     cin >> price;
     cout << '\n';
 
-    vector<Medicine> list = service.filterByPrice(price);
+    My_list<Medicine> list = service.filterByPrice(price);
 
     print(list);
 }
@@ -185,22 +192,22 @@ void UI::runFilterByActiveSubstance() {
     cin >> active_substance;
     cout << '\n';
 
-    vector<Medicine> list = service.filerByActiveSubstance(active_substance);
+    My_list<Medicine> list = service.filerByActiveSubstance(active_substance);
 
     print(list);
 }
 
 void UI::runSortByName() {
-    vector<Medicine> list = service.sortByName();
+    My_list<Medicine> list = service.sortByName();
     print(list);
 }
 
 void UI::runSortByProducer() {
-    vector<Medicine> list = service.sortByProducer();
+    My_list<Medicine> list = service.sortByProducer();
     print(list);
 }
 
 void UI::runSortByActiveSubstanceAndPrice() {
-    vector<Medicine> list = service.sortByActiveSubstanceAndPrice();
+    My_list<Medicine> list = service.sortByActiveSubstanceAndPrice();
     print(list);
 }

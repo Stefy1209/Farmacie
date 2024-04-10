@@ -5,8 +5,8 @@
 
 void runTestRepository() {
     MedicineRepository repository;
-    vector<Medicine> listRepository;
-    vector<Medicine> medicineList = {Medicine(1, "Aspirin", "Bayer", "Acetylsalicylic Acid", 5.0),
+    My_list<Medicine> listRepository;
+    My_list<Medicine> medicineList = {Medicine(1, "Aspirin", "Bayer", "Acetylsalicylic Acid", 5.0),
                                      Medicine(2, "Ibuprofen", "Pfizer", "Ibuprofen", 10.0),
                                      Medicine(3, "Acetaminophen", "Johnson & Johnson", "Acetaminophen", 8.0),
                                      Medicine(4, "Lisinopril", "AstraZeneca", "Lisinopril", 20.0),
@@ -14,8 +14,8 @@ void runTestRepository() {
 
 
     ///Test addMedicine + getList
-    for(const Medicine & medicine : medicineList) {
-        repository.addMedicine(medicine);
+    for(size_t index = 0; index < medicineList.getSize(); ++index) {
+        repository.addMedicine(medicineList.get(index));
     }
 
     listRepository = repository.getList();
@@ -39,7 +39,11 @@ void runTestRepository() {
     assert(listRepository[2] == medicineList[2]);
     assert(listRepository[3] == medicineList[3]);
 
-    repository.removeMedicine(medicineList[5]);
+    try {
+        repository.removeMedicine(medicineList[5]);
+    }
+    catch (...) {
+    }
     listRepository = repository.getList();
     assert(listRepository[0] == medicineList[0]);
     assert(listRepository[1] == medicineList[1]);

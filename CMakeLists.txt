@@ -8,6 +8,7 @@ add_executable(farmacie main.cpp
         medicine.h
         test_medicine.cpp
         test_medicine.h
+        my_list.h
         repository_medicine.cpp
         repository_medicine.h
         test_repository_medicine.cpp
